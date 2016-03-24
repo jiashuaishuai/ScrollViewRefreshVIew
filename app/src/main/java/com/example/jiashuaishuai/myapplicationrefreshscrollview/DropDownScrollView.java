@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
@@ -70,7 +69,7 @@ public class DropDownScrollView extends ScrollView {
         register_rl = (RelativeLayout) layout;
         //设置布局和图片初始大小  这里我设为满屏的16:9，也可以测量实现，
         ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) register_rl.getLayoutParams();
-        LinearLayout.LayoutParams llp = (LinearLayout.LayoutParams) head_image_view.getLayoutParams();
+        RelativeLayout.LayoutParams llp = (RelativeLayout.LayoutParams) head_image_view.getLayoutParams();
         /**
          * 图片
          */
@@ -89,7 +88,7 @@ public class DropDownScrollView extends ScrollView {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) register_rl.getLayoutParams();
-        LinearLayout.LayoutParams llp = (LinearLayout.LayoutParams) head_image_view.getLayoutParams();
+        RelativeLayout.LayoutParams llp = (RelativeLayout.LayoutParams) head_image_view.getLayoutParams();
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
 
@@ -151,7 +150,7 @@ public class DropDownScrollView extends ScrollView {
     @SuppressLint("NewApi")
     public void replyImage() {
         final ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) register_rl.getLayoutParams();
-        final LinearLayout.LayoutParams llp = (LinearLayout.LayoutParams) head_image_view.getLayoutParams();
+        final RelativeLayout.LayoutParams llp = (RelativeLayout.LayoutParams) head_image_view.getLayoutParams();
         final float w = head_image_view.getLayoutParams().width;// 图片当前宽度
         final float h = head_image_view.getLayoutParams().height;// 图片当前高度
         final float newW = metric.widthPixels;// 图片原宽度

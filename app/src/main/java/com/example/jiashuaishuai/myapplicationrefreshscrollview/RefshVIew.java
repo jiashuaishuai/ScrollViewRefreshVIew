@@ -78,9 +78,9 @@ public class RefshVIew extends RelativeLayout {
             case MotionEvent.ACTION_DOWN:
                 point.x = (int) event.getRawX();
                 point.y = (int) event.getRawY();
-                if (animator.isStarted()) {
-                    animator.end();
-                }
+//                if (animator.isStarted()) {
+//                    animator.end();
+//                }
 
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -92,6 +92,11 @@ public class RefshVIew extends RelativeLayout {
                 }
                 int dx = (int) (event.getRawX() - point.x);
                 int dy = (int) (event.getRawY() - point.y);
+
+                if (dy < 5) {
+                    break;
+                }
+
                 Log.i("TAG", "dy:" + dy + "atView.getScrollY()" + atView.getScrollY());
                 endimgy = imgy + dy / 3;//结束y坐标
                 /**
@@ -106,6 +111,14 @@ public class RefshVIew extends RelativeLayout {
 
                 break;
             case MotionEvent.ACTION_UP:
+                int updy = (int) (event.getRawY()-point.y);
+                /**
+                 * 如果偏移量小于5那么判定为点击，点击什么都不做
+                 */
+                if(updy<5)
+                {
+                    break;
+                }
 /**
  * 如果没有达到100则属于取消刷新，停止动画
  */
